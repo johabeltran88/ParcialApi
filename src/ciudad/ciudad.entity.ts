@@ -19,7 +19,7 @@ export class CiudadEntity {
   pais: string;
 
   @Column()
-  numeroHabitantes: number;
+  numeroHabitantes: string;
 
   @ManyToMany(
     () => SupermercadoEntity,

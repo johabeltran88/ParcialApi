@@ -33,7 +33,7 @@ describe('CiudadService', () => {
       const ciudad: CiudadEntity = await repository.save({
         nombre: faker.location.city(),
         pais: faker.helpers.arrayElement(paisesPermitidos),
-        numeroHabitantes: faker.number.int({ min: 1, max: 100 }),
+        numeroHabitantes: faker.number.int({ min: 1, max: 100 }).toString(),
       });
       ciudades.push(ciudad);
     }
@@ -67,7 +67,7 @@ describe('CiudadService', () => {
     const ciudad: Partial<CiudadEntity> = {
       nombre: faker.location.city(),
       pais: faker.helpers.arrayElement(paisesPermitidos),
-      numeroHabitantes: faker.number.int({ min: 1, max: 100 }),
+      numeroHabitantes: faker.number.int({ min: 1, max: 100 }).toString(),
     };
     const newCiudad: CiudadEntity = await service.create(
       ciudad as CiudadEntity,
@@ -86,7 +86,7 @@ describe('CiudadService', () => {
     const ciudad: CiudadEntity = ciudades[0];
     ciudad.nombre = 'Nuevo';
     ciudad.pais = faker.helpers.arrayElement(paisesPermitidos);
-    ciudad.numeroHabitantes = 1;
+    ciudad.numeroHabitantes = faker.number.int({ min: 1, max: 100 }).toString();
     const updatedCiudad: CiudadEntity = await service.update(ciudad.id, ciudad);
     expect(updatedCiudad).not.toBeNull();
     const storedCiudad: CiudadEntity = await repository.findOne({

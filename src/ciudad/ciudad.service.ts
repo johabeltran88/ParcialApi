@@ -54,6 +54,11 @@ export class CiudadService {
         BusinessError.NOT_FOUND,
       );
     ciudad.id = id;
+    if (!this.validarPais(ciudad.pais))
+      throw new BusinessLogicException(
+        'El país no tiene los valores definidos',
+        BusinessError.PRECONDITION_FAILED,
+      );
     return await this.ciudadRepository.save({
       ...persistedCiudad,
       ...ciudad,

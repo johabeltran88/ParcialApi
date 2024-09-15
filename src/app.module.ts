@@ -17,7 +17,7 @@ import { CiudadSupermercadoModule } from './ciudad-supermercado/ciudad-supermerc
       host: 'localhost',
       port: 5432,
       username: 'postgres',
-      password: 'joha1015434021@',
+      password: 'postgres',
       database: 'parcial-db',
       entities: [CiudadEntity, SupermercadoEntity],
       dropSchema: true,

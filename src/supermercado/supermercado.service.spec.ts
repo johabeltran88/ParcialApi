@@ -37,14 +37,18 @@ describe('SupermercadoService', () => {
     for (let i: number = 0; i < 5; i++) {
       const supermercado: SupermercadoEntity = await repository.save({
         nombre: generarNombreLargo(),
-        longitud: faker.number.float({
-          min: -180,
-          max: 180,
-        }),
-        latitud: faker.number.float({
-          min: -180,
-          max: 180,
-        }),
+        longitud: faker.number
+          .float({
+            min: -180,
+            max: 180,
+          })
+          .toString(),
+        latitud: faker.number
+          .float({
+            min: -180,
+            max: 180,
+          })
+          .toString(),
         paginaWeb: faker.internet.url(),
       });
       supermercados.push(supermercado);
@@ -80,11 +84,13 @@ describe('SupermercadoService', () => {
   it('create debe retornar un nuevo supermercado', async () => {
     const supermercado: Partial<SupermercadoEntity> = {
       nombre: generarNombreLargo(),
-      longitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
-      latitud: faker.number.float({ min: -180, max: 180 }),
+      longitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
+      latitud: faker.number.float({ min: -180, max: 180 }).toString(),
       paginaWeb: faker.internet.url(),
     };
     const newSupermercado: SupermercadoEntity = await service.create(
@@ -105,8 +111,8 @@ describe('SupermercadoService', () => {
     const supermercado: SupermercadoEntity = supermercados[0];
     supermercado.nombre = generarNombreLargo();
     supermercado.paginaWeb = 'Nuevo';
-    supermercado.latitud = 1;
-    supermercado.longitud = 1;
+    supermercado.latitud = '1';
+    supermercado.longitud = '1';
     const updateSupermercado: SupermercadoEntity = await service.update(
       supermercado.id,
       supermercado,

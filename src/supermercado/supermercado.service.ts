@@ -57,6 +57,11 @@ export class SupermercadoService {
         BusinessError.NOT_FOUND,
       );
     supermercado.id = id;
+    if (this.validarNombre(supermercado.nombre))
+      throw new BusinessLogicException(
+        'El nombre del supermercado debe tener más de 10 caracteres',
+        BusinessError.PRECONDITION_FAILED,
+      );
     return await this.supermercadoRepository.save({
       ...persistedSupermercado,
       ...supermercado,

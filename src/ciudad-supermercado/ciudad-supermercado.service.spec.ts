@@ -47,14 +47,18 @@ describe('CiudadSupermercadoService', () => {
       const supermercado: SupermercadoEntity =
         await supermercadoRepository.save({
           nombre: generarNombreLargo(),
-          longitud: faker.number.float({
-            min: -180,
-            max: 180,
-          }),
-          latitud: faker.number.float({
-            min: -180,
-            max: 180,
-          }),
+          longitud: faker.number
+            .float({
+              min: -180,
+              max: 180,
+            })
+            .toString(),
+          latitud: faker.number
+            .float({
+              min: -180,
+              max: 180,
+            })
+            .toString(),
           paginaWeb: faker.internet.url(),
         });
       supermercados.push(supermercado);
@@ -62,7 +66,7 @@ describe('CiudadSupermercadoService', () => {
     ciudad = await ciudadRepository.save({
       nombre: faker.location.city(),
       pais: faker.helpers.arrayElement(paisesPermitidos),
-      numeroHabitantes: faker.number.int({ min: 1, max: 100 }),
+      numeroHabitantes: faker.number.int({ min: 1, max: 100 }).toString(),
       supermercados: supermercados,
     });
   };
@@ -75,18 +79,22 @@ describe('CiudadSupermercadoService', () => {
     const ciudad: CiudadEntity = await ciudadRepository.save({
       nombre: faker.location.city(),
       pais: faker.helpers.arrayElement(paisesPermitidos),
-      numeroHabitantes: faker.number.int({ min: 1, max: 100 }),
+      numeroHabitantes: faker.number.int({ min: 1, max: 100 }).toString(),
     });
     const supermercado: SupermercadoEntity = await supermercadoRepository.save({
       nombre: generarNombreLargo(),
-      longitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
-      latitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
+      longitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
+      latitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
       paginaWeb: faker.internet.url(),
     });
     const result: CiudadEntity = await service.addSupermarketToCity(
@@ -126,14 +134,18 @@ describe('CiudadSupermercadoService', () => {
   it('updateSupermarketsFromCity debe actualizar un supermercado a una ciudad', async () => {
     const supermercado: SupermercadoEntity = await supermercadoRepository.save({
       nombre: generarNombreLargo(),
-      longitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
-      latitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
+      longitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
+      latitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
       paginaWeb: faker.internet.url(),
     });
     const result: CiudadEntity = await service.updateSupermarketsFromCity(
@@ -225,14 +237,18 @@ describe('CiudadSupermercadoService', () => {
   it('findSupermarketFromCity debe lanzar una excepción para un supermercado no asociado', async () => {
     const supermercado: SupermercadoEntity = await supermercadoRepository.save({
       nombre: generarNombreLargo(),
-      longitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
-      latitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
+      longitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
+      latitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
       paginaWeb: faker.internet.url(),
     });
     await expect(() =>
@@ -280,14 +296,18 @@ describe('CiudadSupermercadoService', () => {
   it('deleteSupermarketFromCity debe lanzar una excepción para un supermercado no asociado', async () => {
     const supermercado: SupermercadoEntity = await supermercadoRepository.save({
       nombre: generarNombreLargo(),
-      longitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
-      latitud: faker.number.float({
-        min: -180,
-        max: 180,
-      }),
+      longitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
+      latitud: faker.number
+        .float({
+          min: -180,
+          max: 180,
+        })
+        .toString(),
       paginaWeb: faker.internet.url(),
     });
     await expect(() =>

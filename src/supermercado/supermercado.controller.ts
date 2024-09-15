@@ -9,7 +9,6 @@ import {
   Delete,
   HttpCode,
 } from '@nestjs/common';
-import { Controller } from '@nestjs/common';
 import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors/business-errors.interceptor';
 import { SupermercadoDto } from './supermercado.dto';
 import { SupermercadoEntity } from './supermercado.entity';

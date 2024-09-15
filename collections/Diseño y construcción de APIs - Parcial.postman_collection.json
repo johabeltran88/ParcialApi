@@ -1,0 +1,2602 @@
+{
+	"info": {
+		"_postman_id": "597372c0-46e1-47dd-a5bc-1ed4e604d04b",
+		"name": "Diseño y construcción de APIs - Parcial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30577088"
+	},
+	"item": [
+		{
+			"name": "Ciudad",
+			"item": [
+				{
+					"name": "Crear una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"ciudadId\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().numeroHabitantes).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Rosario\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Rosario\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Crear una ciudad 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"ciudadId2\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Salta\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Salta\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Crear una ciudad inválida",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 412\", function() {\r",
+									"    pm.response.to.have.status(412)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El país no tiene los valores definidos\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Bogota\",\r\n    \"pais\": \"Colombia\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"statusCode\": 412,\r\n   \"message\": \"El país no tiene los valores definidos\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities"
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Obtener todas las ciudades",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La lista no está vacía\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').that.is.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().numeroHabitantes).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener una ciudad que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"La ciudad con el id dado no fue encontrada\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.contain('new');\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Rosario new\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Rosario new\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar una ciudad que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"La ciudad con el id dado no fue encontrada\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Rosario new\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"La ciudad con el id dado no fue encontrada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 204\", function() {\r",
+									"    pm.response.to.have.status(204)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId}}"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar una ciudad que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"La ciudad con el id dado no fue encontrada\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"La ciudad con el id dado no fue encontrada\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Supermercado",
+			"item": [
+				{
+					"name": "Crear un supermercado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"supermercadoId\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().paginaWeb).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().latitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().longitud).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Le Jardin des Sens\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Le Jardin des Sens\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Crear un supermercado 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"supermercadoId2\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().longitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().latitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().paginaWeb).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"El susto de la vida\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8u2\",\r\n    \"nombre\": \"El susto de la vida\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Crear un supermercado 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.globals.set(\"supermercadoId3\", pm.response.json().id);\r",
+									"\r",
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().longitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().latitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().paginaWeb).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"El susto de la vida 2\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8u5\",\r\n    \"nombre\": \"El susto de la vida 2\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Crear un supermercado inválido",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 412\", function() {\r",
+									"    pm.response.to.have.status(412)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El nombre del supermercado debe tener más de 10 caracteres\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Hola\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 412,\r\n    \"message\": \"El nombre del supermercado debe tener más de 10 caracteres\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los supermercados",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La lista no está vacía\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').that.is.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener un supermercado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().longitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().latitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().paginaWeb).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener un supermercado que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no fue encontrado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar un supermercado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.contain('new');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Le Jardin des Sens new\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Le Jardin des Sens new\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar un supermercado que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no fue encontrado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Le Jardin des Sens new\",\r\n    \"longitud\": \"1\",\r\n    \"latitud\": \"5\",\r\n    \"paginaWeb\":\"Probando\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"El supermercado con el id dado no fue encontrado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un supermercado",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 204\", function() {\r",
+									"    pm.response.to.have.status(204)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId}}"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un supermercado que no existe",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no fue encontrado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "supermercado-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"El supermercado con el id dado no fue encontrado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "supermercado-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ciudad - Supermercado",
+			"item": [
+				{
+					"name": "Agregar un supermercado a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 201\", function() {\r",
+									"    pm.response.to.have.status(201)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().numeroHabitantes).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La lista no está vacía\", function() {\r",
+									"    pm.expect(pm.response.json().supermercados).to.be.an('array').that.is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n        \"nombre\": \"Salta\",\r\n        \"pais\": \"Argentina\",\r\n        \"numeroHabitantes\":\"5\",\r\n        \"supermercados\": [\r\n            {\r\n                \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n                \"nombre\": \"El susto de la vida\",\r\n                \"longitud\": \"1\",\r\n                \"latitud\": \"5\",\r\n                \"paginaWeb\":\"Probando\"\r\n            }\r\n        ]\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermerdado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermerdado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermerdado-id",
+											"value": "{{supermercadoId2}}"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Agregar un supermercado que no existe a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no fue encontrado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{$guid}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"El supermercado con el id dado no fue encontrado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermercado-id",
+											"value": "{{$guid}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los supermercados de una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La lista no está vacía\", function() {\r",
+									"    pm.expect(pm.response.json()).to.be.an('array').that.is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener un supermercado de una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().longitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().latitud).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().paginaWeb).to.be.a('string').and.to.not.be.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId2}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Obtener un supermercado que no esta asociado a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 412\", function() {\r",
+									"    pm.response.to.have.status(412)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no está asociado a la ciudad\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId3}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId3}}"
+										}
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar los supermercados de una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 200\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Información presente\", function() {\r",
+									"    pm.expect(pm.response.json().nombre).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().pais).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().numeroHabitantes).to.be.a('string').and.to.not.be.empty;\r",
+									"    pm.expect(pm.response.json().id).to.be.a('string').and.to.not.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"La lista no está vacía\", function() {\r",
+									"    pm.expect(pm.response.json().supermercados).to.be.an('array').that.is.not.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"{{supermercadoId2}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n    \"nombre\": \"Salta\",\r\n    \"pais\": \"Argentina\",\r\n    \"numeroHabitantes\":\"5\",\r\n    \"supermercados\": [\r\n        {\r\n            \"id\": \"b3800a7c-eed1-4efe-ab83-0db4e0c7d8a2\",\r\n            \"nombre\": \"El susto de la vida\",\r\n            \"longitud\": \"1\",\r\n            \"latitud\": \"5\",\r\n            \"paginaWeb\":\"Probando\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Actualizar los supermercados de una ciudad con supermercados que no existen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 404\", function() {\r",
+									"    pm.response.to.have.status(404)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no fue encontrado\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": \"{{$guid}}\"\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 404,\r\n    \"message\": \"El supermercado con el id dado no fue encontrado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un supermercado de una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 204\", function() {\r",
+									"    pm.response.to.have.status(204)\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId2}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId2}}"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Eliminar un supermercado que no esta asociado a una ciudad",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"El código de estado es 412\", function() {\r",
+									"    pm.response.to.have.status(412)\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Obtener el mensaje de error esperado\", function() {\r",
+									"   pm.expect(pm.response.json().message).to.be.a('string').and.to.not.be.empty;\r",
+									"   pm.expect(pm.response.json().message).to.eql(\"El supermercado con el id dado no está asociado a la ciudad\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"cities",
+								":ciudad-id",
+								"supermarkets",
+								":supermercado-id"
+							],
+							"variable": [
+								{
+									"key": "ciudad-id",
+									"value": "{{ciudadId2}}"
+								},
+								{
+									"key": "supermercado-id",
+									"value": "{{supermercadoId3}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Respuesta",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"statusCode\": 412,\r\n    \"message\": \"El supermercado con el id dado no esta asociado a la ciudad\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/cities/:ciudad-id/supermarkets/:supermercado-id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"cities",
+										":ciudad-id",
+										"supermarkets",
+										":supermercado-id"
+									],
+									"variable": [
+										{
+											"key": "ciudad-id",
+											"value": "{{ciudadId2}}"
+										},
+										{
+											"key": "supermercado-id",
+											"value": "{{supermercadoId3}}"
+										}
+									]
+								}
+							},
+							"status": "Precondition Failed",
+							"code": 412,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}
